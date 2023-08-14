@@ -23,17 +23,19 @@ void MenuInicial()
         switch (opcao)
         {
             case 1:
-                MenuNovoCadastro novoCadastro = new MenuNovoCadastro();
+                MenuNovoCadastro novoCadastro = new();
                 novoCadastro.Executar(usuarios);
                 break;
             case 2:
-                MenuListarUsuarios listarUsuarios = new MenuListarUsuarios();
+                MenuListarUsuarios listarUsuarios = new();
                 listarUsuarios.Executar(usuarios);
                 break;
             case 3:
-                Console.WriteLine("Acessando a opção 3");
+                MenuExibirDetalhes exibirDetalhes = new();
+                exibirDetalhes.Executar(usuarios);
                 break;
             case 0:
+                Console.Clear();
                 Console.WriteLine("Saindo o Sistema de Usuários...");
                 Thread.Sleep(1000);
                 return;
