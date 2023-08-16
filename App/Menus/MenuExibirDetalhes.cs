@@ -12,10 +12,16 @@ internal class MenuExibirDetalhes
         string emailDoUsuario = Console.ReadLine()!;
         if(usuarios.ContainsKey(emailDoUsuario))
         {
+            Console.Clear();
+
             Usuario usuario = usuarios[emailDoUsuario];
-            Console.WriteLine($"\nExibindo detalhes do usuário: {usuario.Nome}");
+            Console.WriteLine("Exibindo detalhes do usuário: ");
+            Console.WriteLine($"\nNome: {usuario.Nome}");
             Console.WriteLine($"E-mail: {usuario.Email}");
-            Console.WriteLine($"Senha: {usuario.Senha}");
+
+            int qtdLetrasSenha = usuario.Senha.Length;
+            string asteriscos = string.Empty.PadLeft(qtdLetrasSenha, '*');
+            Console.WriteLine($"Senha: {asteriscos}");
 
             Console.Write("\nDigite uma tecla para voltar ao menu principal: ");
             Console.ReadKey();
