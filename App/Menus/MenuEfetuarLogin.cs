@@ -21,7 +21,8 @@ internal class MenuEfetuarLogin
             {
                 Console.Clear();
                 Console.WriteLine("Login bem-sucedido!");
-                //MenuExibirUsuario();
+                MenuExibirUsuario exibirUsuario = new();
+                exibirUsuario.Executar(usuarios, email);
             }
             else
             {
@@ -44,14 +45,19 @@ internal class MenuEfetuarLogin
                 }
                 else
                 {
-                    Console.WriteLine("Opção inválida!");
+                    Console.WriteLine("\nOpção inválida!");
+                    Thread.Sleep(1000);
+                    Console.Clear();
+                    Executar(usuarios);
                 }
             }
         } 
         else
         {
             Console.WriteLine("E-mail não registrado!");
-            
+            Console.Write("\nDigite uma tecla para voltar ao menu principal: ");
+            Console.ReadKey();
+            Console.Clear();
         }
     }
 }
