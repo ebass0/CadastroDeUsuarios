@@ -1,4 +1,5 @@
-﻿using App.Modelos;
+﻿using App.Menus.MenusLogin;
+using App.Modelos;
 
 namespace App.Menus;
 
@@ -19,10 +20,11 @@ internal class MenuEfetuarLogin
 
             if(usuario.Senha == senha)
             {
-                Console.Clear();
-                Console.WriteLine("Login bem-sucedido!");
                 MenuExibirUsuario exibirUsuario = new();
                 exibirUsuario.Executar(usuarios, email);
+
+                MenuOpcoesLogin opcoesLogin = new();
+                opcoesLogin.Executar(usuarios);   
             }
             else
             {

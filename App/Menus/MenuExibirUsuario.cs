@@ -13,9 +13,5 @@ internal class MenuExibirUsuario
         Console.WriteLine($"Nome: {usuario.Nome}");
         Console.WriteLine($"E-mail: {usuario.Email}");
         Console.WriteLine($"Senha: {usuario.Senha}");
-
-        Console.Write("\nDigite uma tecla para voltar ao menu principal: ");
-        Console.ReadLine();
-        Console.Clear();
     }
 }
