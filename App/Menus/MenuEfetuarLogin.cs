@@ -20,11 +20,8 @@ internal class MenuEfetuarLogin
 
             if(usuario.Senha == senha)
             {
-                MenuExibirUsuario exibirUsuario = new();
-                exibirUsuario.Executar(usuarios, email);
-
                 MenuOpcoesLogin opcoesLogin = new();
-                opcoesLogin.Executar(usuarios);   
+                opcoesLogin.Executar(usuarios, email);   
             }
             else
             {
