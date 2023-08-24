@@ -1,4 +1,5 @@
-﻿using App.Modelos;
+﻿using App.Exceptions;
+using App.Modelos;
 
 namespace App.Menus;
 
@@ -12,44 +13,61 @@ internal class MenuPrincipal
 
     public void Executar(Dictionary<string, Usuario> usuarios)
     {
-        while (true)
+        try
         {
-            Logo();
-            Console.WriteLine("Digite 1 para registrar um novo cadastro");
-            Console.WriteLine("Digite 2 para fazer login");
-            Console.WriteLine("Digite 3 para listar os usuários cadastrados");
-            Console.WriteLine("Digite 4 para exibir detalhes");
-            Console.WriteLine("Digite 0 para sair");
-
-            Console.Write("\nDigite a sua opção: ");
-            int opcao = int.Parse(Console.ReadLine()!);
-
-            switch (opcao)
+            char opcao = '0';
+            while (opcao != '5')
             {
-                case 1:
-                    MenuNovoCadastro novoCadastro = new();
-                    novoCadastro.Executar(usuarios);
-                    break;
-                case 2:
-                    MenuEfetuarLogin efetuarLogin = new();
-                    efetuarLogin.Executar(usuarios);
-                    break;
-                case 3:
-                    MenuListarUsuarios listarUsuarios = new();
-                    listarUsuarios.Executar(usuarios);
-                    break;
-                case 4:
-                    MenuExibirDetalhes exibirDetalhes = new();
-                    exibirDetalhes.Executar(usuarios);
-                    break;
-                case 0:
-                    MenuSair sair = new();
-                    sair.Executar(usuarios);
-                    return;
-                default:
-                    Console.WriteLine("Opção inválida");
-                    break;
+                Logo();
+                Console.WriteLine("Digite 1 para registrar um novo cadastro");
+                Console.WriteLine("Digite 2 para fazer login");
+                Console.WriteLine("Digite 3 para listar os usuários cadastrados");
+                Console.WriteLine("Digite 4 para exibir detalhes");
+                Console.WriteLine("Digite 5 para sair");
+                Console.Write("\nDigite a sua opção: ");
+
+                try
+                {
+                    opcao = Console.ReadLine()[0];
+                }
+                catch (Exception ex)
+                {
+                    throw new AppExceptions(ex.Message);
+                }
+
+                switch (opcao)
+                {
+                    case '1':
+                        MenuNovoCadastro novoCadastro = new();
+                        novoCadastro.Executar(usuarios);
+                        break;
+                    case '2':
+                        MenuEfetuarLogin efetuarLogin = new();
+                        efetuarLogin.Executar(usuarios);
+                        break;
+                    case '3':
+                        MenuListarUsuarios listarUsuarios = new();
+                        listarUsuarios.Executar(usuarios);
+                        break;
+                    case '4':
+                        MenuExibirDetalhes exibirDetalhes = new();
+                        exibirDetalhes.Executar(usuarios);
+                        break;
+                    case '5':
+                        MenuSair sair = new();
+                        sair.Executar(usuarios);
+                        break;
+                    default:
+                        Console.WriteLine("\nOpção inexistente!");
+                        return;
+                }
             }
+
+        }
+        catch (AppExceptions excecao)
+        {
+            Console.Clear();
+            Console.WriteLine($"{excecao.Message}");
         }
     }
 }
