@@ -14,7 +14,7 @@ internal class MenuListarUsuarios
             Console.WriteLine($"Usuário: {usuario}");
         }
 
-        Console.WriteLine("\nDigite uma tecla para voltar ao menu principal: ");
+        Console.Write("\nDigite uma tecla para voltar ao menu principal: ");
         Console.ReadKey();
         Console.Clear();
     }
