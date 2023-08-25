@@ -1,6 +1,6 @@
 ﻿using App.Modelos;
 
-namespace App.Menus;
+namespace App.Menus.MenusLogin;
 
 internal class MenuExibirUsuario
 {

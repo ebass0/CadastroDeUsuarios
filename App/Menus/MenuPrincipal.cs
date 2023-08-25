@@ -30,9 +30,9 @@ internal class MenuPrincipal
                 {
                     opcao = Console.ReadLine()[0];
                 }
-                catch (Exception ex)
+                catch (Exception excecao)
                 {
-                    throw new AppExceptions(ex.Message);
+                    throw new AppExceptions(excecao.Message);
                 }
 
                 switch (opcao)
